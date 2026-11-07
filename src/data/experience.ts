@@ -1,0 +1,5 @@
+export interface Experience { role: string; company: string; period: string; current: boolean; description: string; points: string[]; }
+export const experience: Experience[] = [
+ {role:'Software Engineer II',company:'Deloitte',period:'Current role',current:true,description:'Enterprise backend engineering at production scale.',points:['Contribute to backend applications and enterprise integrations supporting a government healthcare technology project.','Support production workloads processing approximately 100K–300K records daily across the wider systems.','Investigate complex data flows, troubleshoot production issues, and contribute to query and application performance improvements.']},
+ {role:'Software Engineer I',company:'Deloitte',period:'Earlier role',current:false,description:'A foundation in dependable enterprise software.',points:['Implemented and maintained backend functionality using C#, .NET, and SQL Server.','Worked on stored procedures, data transformations, and batch and real-time integration workflows.','Contributed to reliable data exchanges using WCF, BizTalk, and Corticon rules-driven systems.']}
+];
