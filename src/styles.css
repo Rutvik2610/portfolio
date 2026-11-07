@@ -2289,3 +2289,17 @@ footer > span:last-child {
     transition: none !important;
   }
 }
+
+/* The wider SOFTWARE line retains the existing heading proportions on mobile. */
+h1 > .hero-title-primary {
+  display: block;
+  font-size: .88em;
+  color: var(--text);
+}
+.credential-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.credential-link svg { flex-shrink: 0; }
+.credential-link:hover { color: var(--accent); }

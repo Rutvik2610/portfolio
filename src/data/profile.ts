@@ -19,11 +19,11 @@ export const profile = {
     year: "2023",
     grade: "8.86 / 10 CGPI",
   },
-  // Deliberately disabled. Do not put the original resume (which contains a phone number) in public/.
+  // Public resume downloads are disabled.
   resume: { enabled: false, path: "" },
   certifications: [
-    "Microsoft Azure Fundamentals · AZ-900",
-    "AWS Certified Cloud Practitioner · CLF-C02",
+    { name: "Microsoft Azure Fundamentals · AZ-900", url: "" },
+    { name: "AWS Certified Cloud Practitioner · CLF-C02", url: "" },
   ],
   awards: "2× Spot Award · 1× Applause Award",
   principles: [

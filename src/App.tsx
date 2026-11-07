@@ -281,15 +281,13 @@ export default function App() {
           <section className="hero section" id="about">
             <Reveal>
               <div className="eyebrow">
-                <span className="live-dot" /> SOFTWARE ENGINEER II · MUMBAI,
-                INDIA
+                <span className="live-dot" /> {profile.role.toUpperCase()} · BACKEND ENGINEERING
               </div>
               <p className="hero-greeting">
                 Hi, I’m {profile.firstName}. <span>↗</span>
               </p>
-              <h1>
-                BACKEND
-                <br />
+              <h1 aria-label="Software Engineer">
+                <span className="hero-title-primary">SOFTWARE</span>
                 <span>ENGINEER.</span>
               </h1>
               <p className="hero-statement">
@@ -437,7 +435,13 @@ export default function App() {
                 <span className="section-number">CERTIFICATIONS</span>
               </div>
               {profile.certifications.map((c) => (
-                <p key={c}>{c}</p>
+                <p key={c.name}>
+                  {validExternal(c.url) ? (
+                    <a className="credential-link" href={c.url} target="_blank" rel="noreferrer" aria-label={`Verify ${c.name}`}>
+                      {c.name}<ArrowUpRight size={16} />
+                    </a>
+                  ) : c.name}
+                </p>
               ))}
             </Reveal>
           </section>
