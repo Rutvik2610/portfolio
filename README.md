@@ -1,85 +1,101 @@
-# Rutvik Purohit · Software Engineer Portfolio
+# Rutvik Purohit · Backend Engineer
 
-A dark-first, responsive portfolio built with React, TypeScript, Vite, Tailwind CSS, Motion, and Lucide. Fonts are bundled locally. No backend, analytics, third-party embeds, or confidential client details.
+A personal portfolio with oversized editorial typography, a sticky profile card, and original project illustrations. Built with React, TypeScript, Vite, Tailwind CSS, Motion, and Lucide; hosted on GitHub Pages.
 
 ## Run locally
 
-Use Node.js 24 LTS and npm:
+Use Node.js 24 LTS:
 
 ```sh
 npm ci
 npm run dev
 ```
 
-`npm run check` runs TypeScript, ESLint, and the production build. `npm run preview` serves the built site. The lockfile pins dependency versions for reproducible installation.
+- `npm run check` — TypeScript, ESLint, and production build.
+- `npm test` — render-level content, privacy, visibility, and navigation checks.
+- `npm run preview` — serve the production build.
 
-## Edit content
+Fonts ship locally. No backend, analytics, or third-party embeds are required.
 
-| File | Content |
+## Update the content
+
+| File | What to change |
 | --- | --- |
-| `src/data/profile.ts` | Name, summary, about, education, location, principles, resume |
-| `src/data/experience.ts` | Roles, descriptions, and configurable employment dates |
-| `src/data/skills.ts` | Production skills and separately labelled personal/learning technologies |
-| `src/data/projects.ts` | Project visibility, status, problem, stack, architecture, decisions, links |
-| `src/data/socials.ts` | Email, LinkedIn, GitHub |
+| `src/data/profile.ts` | Name, introduction, about, education, awards, certifications, principles |
+| `src/data/experience.ts` | Companies, exact role dates, responsibilities |
+| `src/data/projects.ts` | Projects, visibility/status, descriptions, implementation details, links |
+| `src/data/skills.ts` | Enterprise versus personal-project technologies and additional tools |
+| `src/data/socials.ts` | Confirmed email and profile URLs |
 
-No employment dates, contact details, repository URLs, or completed personal projects have been invented. Replace `Current role` and `Earlier role` with confirmed dates when ready. The scale figure refers to workloads across supported systems, not personal throughput.
+The current details come from Rutvik’s supplied resume and confirmed email. Enterprise workload figures describe the systems he contributes to, not throughput attributable to one engineer. No client-specific architecture or healthcare data is included.
 
 ### Projects
 
-Three project ideas are included with `visible: false`. They never appear in the public UI until explicitly enabled. Set `status` to `Draft`, `Planned`, `In progress`, or `Completed`, write accurate details, then enable `visible`. GitHub and demo links are optional; only valid HTTPS URLs render. Do not add client architecture or proprietary code. When all projects are hidden, the site shows an honest case-study preparation state.
+LedgerFlow and TenancyTrace are visible personal projects described in the supplied resume. Their illustrations are conceptual, not screenshots or running services. Expand **Inside the engineering** for the problem, implementation, and technical decisions.
 
-### Resume and contact
+The resume’s embedded project links pointed to differently named repositories. Those links were deliberately excluded. Add `github` or `demo` only when the correct HTTPS URL is available; no inactive placeholder buttons appear. `Completed` describes the implementation stated in the resume, not independent code verification or a promise that a public demo is online.
 
-Add the real PDF at `public/assets/Rutvik-Purohit-Resume.pdf`, then set `profile.resume.available` to `true`. The path is relative to the public folder and resolves using Vite’s base, including repository subpaths. Until enabled, every resume CTA opens an accessible native dialog instead of downloading a nonexistent file.
+A third project idea remains `visible: false`. Status supports `Draft`, `Planned`, `In progress`, and `Completed`; only explicitly visible projects render. Set `visible: false` to hide any project without deleting its content.
 
-Set `socials.email` to a plain email address and social URLs to complete HTTPS links. Empty values render no links and show a contact-pending message. No nonfunctional contact form is included.
+### Privacy and resume
 
-### SEO
+**There is no public resume download.** `profile.resume.enabled` is false, the asset path is empty, and the original PDF is not included in source, public assets, or deployment output. No mobile number is stored in the website content.
 
-Copy `.env.example` to `.env.local`. Set `VITE_SITE_URL` to the full HTTPS deployment URL including any repository path. Build output then includes a canonical link, Person JSON-LD, Open Graph URL/image, and sitemap. Without a URL, these are deliberately omitted. Metadata is in `index.html`; update it alongside profile changes. The sharing image is `public/assets/social.svg`; for broad social crawler support, replace it with a 1200×630 PNG and update `scripts/seo.mjs`. Favicon: `public/favicon.svg`. Robots output is generated at build time.
+If you later choose to offer a resume, first create a public-safe PDF without information you wish to keep private. Put it in `public/assets/`, set a relative `resume.path`, and enable the flag. The optional download resolves against Vite’s repository base. The privacy regression test intentionally rejects PDFs and download links by default; update that expectation deliberately when changing this policy.
 
-## GitHub Pages
+Email is a mailto link with a copy button. If clipboard access is unavailable, the button falls back to email. Empty contact values render no broken links. GitHub and LinkedIn links open in a new tab.
 
-The source is prepared for deployment; nothing has been published.
+## Design and behavior
 
-1. Create or choose your own repository and push this project to its `main` branch.
-2. In **Settings → Pages → Build and deployment**, select **GitHub Actions**.
-3. Enable Actions if prompted, then run **Deploy portfolio to GitHub Pages** or push to `main`.
-4. The official configure-pages action supplies the URL and base path automatically. Both `USERNAME.github.io` root repositories and project repositories work without editing source or a repository name in components.
+- Dark-first warm charcoal, off-white, and orange; persistent optional light theme.
+- 18px base text, large headings, and roomier project and experience copy.
+- Profile card stays visible on desktop and becomes a compact horizontal card on mobile. RP artwork is a monogram, not an invented portrait.
+- Active section navigation, mobile menu with Escape handling, back-to-top link.
+- Native expandable case studies and an interactive conceptual retry illustration.
+- Reduced-motion support, skip link, visible keyboard focus, semantic landmarks.
 
-The workflow installs with `npm ci`, checks TypeScript and lint, builds, uploads the Pages artifact, and deploys in the `github-pages` environment. It uses the built-in GitHub token with `pages: write` and `id-token: write`; no personal access token is needed. Official action majors were checked against their latest GitHub releases during implementation (November 2026).
+The direction draws on the profile-led layout of [Sawad](https://sawad.framer.website/), the large identity typography of [Andy Wong](https://www.andy-hk.com/), and the project depth of [Abhishek Agrawal](https://abhish0.github.io/My-Portfolio/). Composition, illustrations, and copy are original. [Developer Portfolios](https://github.com/emmabostian/developer-portfolios) provided further reference context.
 
-For manual builds:
+## Deploy with GitHub Pages
+
+Repository: `Rutvik2610/portfolio`.
+
+1. In **Settings → Pages**, select **GitHub Actions** as the build source.
+2. Push to `main` or manually run **Deploy portfolio to GitHub Pages** in Actions.
+3. The official workflow installs with `npm ci`, runs types/lint/content tests, builds, uploads the artifact, and deploys using the `github-pages` environment.
+
+`actions/configure-pages` supplies the URL and base path automatically for both root and repository Pages sites. Only the built-in GitHub token is required. No personal access token is used by the workflow. Official actions: checkout 7, setup-node 7, configure-pages 6, upload-pages-artifact 5, deploy-pages 5 (verified against release metadata during initial setup in November 2026).
+
+Manual production builds:
 
 ```sh
-VITE_BASE_PATH=/REPOSITORY/ VITE_SITE_URL=https://USERNAME.github.io/REPOSITORY npm run build
-# Root site:
-VITE_BASE_PATH=/ VITE_SITE_URL=https://USERNAME.github.io npm run build
+VITE_BASE_PATH=/portfolio/ VITE_SITE_URL=https://rutvik2610.github.io/portfolio npm run build
+# A root-domain site instead:
+VITE_BASE_PATH=/ VITE_SITE_URL=https://your-domain.example npm run build
 ```
 
-Navigation uses section hashes, so refreshes require no SPA rewrites. Assets and resume links resolve against the configured base.
+Copy `.env.example` to `.env.local` for local settings. Navigation uses section hashes and requires no server-side routing rewrites.
 
-### Custom domain later
+### SEO and assets
 
-Configure the domain in repository Pages settings, add the DNS records GitHub documents for that domain type, and enable HTTPS after verification. If using a CNAME file, put it in `public/CNAME`. Re-run the workflow so configure-pages picks up the domain and root base path. For manual builds set `VITE_BASE_PATH=/` and `VITE_SITE_URL=https://your-domain.example`.
+Set the full HTTPS `VITE_SITE_URL` to emit canonical URL, Person structured data, Open Graph image/URL, sitemap, and robots sitemap reference. With no URL set, deployment-specific metadata is omitted. Metadata is in `index.html` and `scripts/seo.mjs`; update it alongside profile content.
 
-## Interaction and accessibility
+The favicon is `public/favicon.svg`; sharing art is `public/assets/social.svg`. Replace sharing art with a 1200×630 PNG and update the script if broader social-crawler compatibility is needed.
 
-Sticky navigation tracks visible sections; mobile navigation exposes its expanded state. Theme persists locally, with a dark default and a pre-render theme initializer to avoid flashing. Reduced-motion preferences disable CSS animation and smooth scroll; Motion respects the same preference. Native dialog supports Escape and focus handling. Skip link, semantic landmarks, visible focus rings, and keyboard-operable flow stages are included. The schematic is illustrative, not a representation of a client system.
+### Custom domain
+
+Configure the domain in repository Pages settings, add GitHub’s documented DNS records, and enable HTTPS after domain verification. If using a tracked CNAME, add `public/CNAME`. Run the workflow again; configure-pages will provide the custom URL and root base. Manual builds should use `VITE_BASE_PATH=/` and the full custom-domain URL.
 
 ## Structure
 
-```
-src/components/    Reusable data-flow visual
-src/data/          Editable typed content
-src/App.tsx        Section composition and UI
-src/styles.css    Theme tokens, responsive styling, microinteractions
-scripts/seo.mjs    Deployment-aware static SEO output
-public/           Fonts are imported through npm; favicon and sharing art live here
-.github/workflows/ Official Pages CI/CD
+```text
+src/components/  Project cards and conceptual illustrations
+src/data/        Typed editable content
+src/App.tsx      Layout, sections, navigation, theme, contact interactions
+src/styles.css   Theme tokens, responsive layouts, typography
+scripts/         Static SEO and content regression checks
+public/          Public-safe favicon and sharing art only
+.github/         Official GitHub Pages workflow
 ```
 
-## Checks and remaining setup
-
-See `VERIFICATION.md` for executed checks and environment limits. Supply real contact links, a resume PDF, employment dates, confirmed additional technologies, and real project write-ups before using the portfolio for applications. Browser-based Lighthouse scores are targets, not claimed results.
+See `VERIFICATION.md` for executed checks and the remaining browser-testing limit.
