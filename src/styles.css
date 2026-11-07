@@ -2290,10 +2290,12 @@ footer > span:last-child {
   }
 }
 
-/* The wider SOFTWARE line retains the existing heading proportions on mobile. */
+/* Use natural tracking so adjacent capitals stay distinct at every breakpoint. */
 h1 > .hero-title-primary {
   display: block;
-  font-size: .88em;
+  font-size: .82em;
+  letter-spacing: 0;
+  font-kerning: normal;
   color: var(--text);
 }
 .credential-link {
