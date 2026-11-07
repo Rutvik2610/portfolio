@@ -22,7 +22,7 @@ export const profile = {
   // Public resume downloads are disabled.
   resume: { enabled: false, path: "" },
   certifications: [
-    { name: "Microsoft Azure Fundamentals · AZ-900", url: "" },
+    { name: "Microsoft Azure Fundamentals · AZ-900", url: "https://learn.microsoft.com/en-us/users/RutvikPurohit-6231/credentials/E822F28B0EEBE121" },
     { name: "AWS Certified Cloud Practitioner · CLF-C02", url: "" },
   ],
   awards: "2× Spot Award · 1× Applause Award",

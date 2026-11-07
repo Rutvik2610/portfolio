@@ -68,7 +68,7 @@ try {
   socials.linkedin = "";
   const missing = renderToStaticMarkup(createElement(App));
   assert(
-    !missing.includes("mailto:") && !missing.includes('href="https://'),
+    !missing.includes("mailto:") && !missing.includes(`href="${saved.github}"`) && !missing.includes(`href="${saved.linkedin}"`),
     "No broken empty contact links",
   );
   Object.assign(socials, saved);
