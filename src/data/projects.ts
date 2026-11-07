@@ -13,10 +13,11 @@ export interface Project {
   demo?: string;
 }
 // Implementation claims below come from Rutvik’s supplied resume.
-// Its project hyperlinks point to unrelated repository names, so they are intentionally omitted.
+// Repository links are configured individually when provided.
 export const projects: Project[] = [
   {
     id: "ledgerflow",
+    github: "https://github.com/Rutvik2610/ledger-flow",
     name: "LedgerFlow",
     category: "TRANSACTION PROCESSING",
     status: "Completed",
