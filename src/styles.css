@@ -335,6 +335,7 @@ main {
   scroll-margin-top: 8px;
 }
 .hero {
+  container-type: inline-size;
   padding-top: 17px;
 }
 .eyebrow,
@@ -377,13 +378,17 @@ main {
   padding-left: 6px;
 }
 h1 {
-  font-size: clamp(64px, 7.1vw, 104px);
-  line-height: 0.96;
-  letter-spacing: -6px;
+  font-size: clamp(40px, 16cqw, 104px);
+  line-height: 1.05;
+  letter-spacing: 0;
+  font-kerning: normal;
   font-weight: 800;
   margin: 0 0 30px;
 }
 h1 > span {
+  display: block;
+  font-size: inherit;
+  letter-spacing: inherit;
   color: var(--display-muted);
 }
 .hero-statement {
@@ -1250,9 +1255,6 @@ footer > span:last-child {
     grid-template-columns: 325px minmax(0, 1fr);
     gap: 100px;
   }
-  h1 {
-    font-size: 112px;
-  }
   .hero {
     padding-top: 20px;
   }
@@ -1288,10 +1290,6 @@ footer > span:last-child {
   }
   .navigation {
     gap: 25px;
-  }
-  h1 {
-    font-size: clamp(59px, 7vw, 88px);
-    letter-spacing: -4.5px;
   }
   .hero-statement {
     font-size: 29px;
@@ -1465,10 +1463,6 @@ footer > span:last-child {
   }
   .hero-greeting {
     font-size: 21px;
-  }
-  h1 {
-    font-size: clamp(51px, 7vw, 65px);
-    letter-spacing: -3.9px;
   }
   .hero-statement {
     font-size: 27px;
@@ -1814,12 +1808,6 @@ footer > span:last-child {
     font-size: 24px;
     margin-top: 29px;
   }
-  h1 {
-    font-size: clamp(64px, 12.8vw, 91px);
-    letter-spacing: -4.8px;
-    line-height: 0.98;
-    margin-bottom: 28px;
-  }
   .hero-statement {
     font-size: 31px;
   }
@@ -2132,10 +2120,6 @@ footer > span:last-child {
   .hero .eyebrow {
     font-size: 8px;
   }
-  h1 {
-    font-size: 61px;
-    letter-spacing: -4px;
-  }
   .hero-statement {
     font-size: 28px;
   }
@@ -2290,12 +2274,9 @@ footer > span:last-child {
   }
 }
 
-/* Use natural tracking so adjacent capitals stay distinct at every breakpoint. */
+/* Both heading lines inherit one size and natural tracking from h1. */
 h1 > .hero-title-primary {
   display: block;
-  font-size: .82em;
-  letter-spacing: 0;
-  font-kerning: normal;
   color: var(--text);
 }
 .credential-link {
